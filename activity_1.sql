@@ -2,7 +2,7 @@
 CREATE TABLE students (
 	id 			integer 			   	 PRIMARY KEY,
 	first_name VARCHAR(255) NOT NULL,
-	middle_name VARCHAR(255) NULL, 
+	middle_name VARCHAR(255), 
 	last_name VARCHAR(255) NOT NULL, 
 	age INTEGER,
 	location VARCHAR(255) NOT NULL
