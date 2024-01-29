@@ -8,7 +8,7 @@ CREATE TABLE students (
 	location VARCHAR(255) NOT NULL
 );
 
-INSERT INTO students(id,first_name,middle_name,last_name, age,location)
+INSERT INTO students(id,first_name,last_name, age,location)
 VALUES (1,'Juan', 'Cruz' ,18, 'Manila'),
 (2,'Anne', 'Wall' ,20, 'Manila'),
 (3,'Theresa', 'Joseph' ,21,'Manila'),
