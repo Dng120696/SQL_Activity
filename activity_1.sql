@@ -2,11 +2,10 @@
 CREATE TABLE students (
 	id 			integer 			   	 PRIMARY KEY,
 	first_name VARCHAR(255) NOT NULL,
-	middle_name VARCHAR(255), 
+	middle_name VARCHAR(255) , 
 	last_name VARCHAR(255) NOT NULL, 
 	age INTEGER,
-	location VARCHAR(255) NOT NULL
-);
+	location VARCHAR(255) NOT NULL);
 
 INSERT INTO students(id,first_name,last_name, age,location)
 VALUES (1,'Juan', 'Cruz' ,18, 'Manila'),
@@ -22,3 +21,14 @@ WHERE id = 1;
 
 DELETE FROM students
 WHERE id = 6;
+
+
+SELECT COUNT(*) FROM students;
+
+SELECT * FROM students
+WHERE location = 'Manila';
+
+SELECT AVG(age) FROM students;
+
+SELECT * from students ORDER BY age DESC;
+
