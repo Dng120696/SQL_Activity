@@ -54,15 +54,15 @@ CREATE TABLE research_papers(
 INSERT INTO research_papers (id, student_id,grade )
 VALUES 
 	(6, 1, 'A'),
-	(7, 2, 'A'),
+	(7, 2, 'D'),
 	(8, 3, 'B'),
 	(9, 4, 'C'),
-	(10, 5, 'B'),
+	(10, 5, 'E'),
 	(11, 1, NULL),
 	(12, 3, 'A'),
 	(13, 2, 'C'),
 	(14, 2, NULL),
-	(15	, 4, 'B')
+	(15	, 4, 'F')
 ;
 
 -- just checking the table
