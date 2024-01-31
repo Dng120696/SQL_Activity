@@ -22,13 +22,79 @@ WHERE id = 1;
 DELETE FROM students
 WHERE id = 6;
 
-
+-- ACtivity #2
 SELECT COUNT(*) FROM students;
 
 SELECT * FROM students
 WHERE location = 'Manila';
 
-SELECT AVG(age) FROM students;
+SELECT ROUND(AVG(age),2) FROM students;
 
 SELECT * from students ORDER BY age DESC;
+
+SELECT * FROM students;
+
+-- ACtivity #3
+--  - grades can be "A", "B", "C", "D", "E", "F", or NULL
+-- bonus points if you can implement something like this https://stackoverflow.com/questions/10923213/postgres-enum-data-type-or-check-constraint
+
+CREATE TYPE research_grades AS ENUM ('A', 'B', 'C', 'D', 'E', 'F');
+
+-- Create new table research_papers with the following columns
+CREATE TABLE research_papers(
+	id int PRIMARY KEY,
+	student_id int NOT NULL,
+	grade research_grades,
+	FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+-- Insert 10 records to the new table
+-- 2 students should have more than 1 research paper
+-- 2 students should have 1 ungraded (NULL) research paper
+INSERT INTO research_papers (id, student_id,grade )
+VALUES 
+	(6, 1, 'A'),
+	(7, 2, 'A'),
+	(8, 3, 'B'),
+	(9, 4, 'C'),
+	(10, 5, 'B'),
+	(11, 1, NULL),
+	(12, 3, 'A'),
+	(13, 2, 'C'),
+	(14, 2, NULL),
+	(15	, 4, 'B')
+;
+
+-- just checking the table
+SELECT * FROM research_papers;
+
+-- Query all students with multiple research papers (select first_name, last_name, and number_of_research_papers only)
+SELECT
+    s.first_name,
+    s.last_name,
+    COUNT(rp.id) AS number_of_research_papers
+FROM
+    students s
+JOIN
+    research_papers rp ON s.id = rp.student_id
+GROUP BY
+    s.id, s.first_name, s.last_name
+HAVING
+    COUNT(rp.id) > 1;
+
+-- Query all students with ungraded research papers (select first_name, last_name, research_paper_id, and grade only)
+
+SELECT
+    s.first_name,
+    s.last_name,
+    rp.id AS research_paper_id,
+    rp.grade AS grade
+FROM
+    students s
+JOIN
+    research_papers rp ON s.id = rp.student_id
+WHERE
+    rp.grade IS NULL;
+
+
 
